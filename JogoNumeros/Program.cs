@@ -6,32 +6,38 @@ using System.Threading.Tasks;
 
 namespace JogoNumeros
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            int num;
-
-            Console.WriteLine("Digite um Número");
-            num = int.Parse(Console.ReadLine());
-            //conta a quantidade de divisíveis
-            for (int cont = 1; cont <= num/3; cont++)
-
-            if (cont !=3)
+            for (int i = 1; i <= 100; i++)
             {
-               
-                Console.WriteLine ("Fizz");
-            }
-            for (int cont = 1; cont <= num/5; cont++)
+                bool tres = i.Multiplica(3);
+                bool cinco = i.Multiplica(5);
 
-            if (cont !=5)
-            {
-                
-                Console.WriteLine("Buzz");
+                if (cinco && tres)
+                {
+                    Console.WriteLine("{0}: FizzBuzz", i);
+                }
+                else if (tres)
+                {
+                    Console.WriteLine("{0}: Fizz", i);
+                }
+                else if (cinco)
+                {
+                    Console.WriteLine("{0}: Buzz", i);
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
             }
-            
-            Console.ReadKey();
-            
+            Console.ReadLine();
+        }
+
+        private static bool Multiplica(this int sourceNumber, int targetNumber)
+        {
+            return (sourceNumber % targetNumber) == 0;
         }
     }
 }
